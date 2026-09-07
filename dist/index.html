@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Academia interactiva de modelos de ciencia de datos para convertir predicciones en decisiones inmobiliarias medibles." />
+  <title>Decision Intelligence Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Decision Intelligence Academy, inicio">
+      <span class="brand-mark" aria-hidden="true">DI</span>
+      <span><b>Decision Intelligence</b><small>ACADEMY · REAL ESTATE LAB</small></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#constelacion">Constelación</a><a href="#laboratorios">Laboratorios</a><a href="#ruta">Ruta</a><a href="#biblioteca">Biblioteca</a>
+    </nav>
+    <button class="theme" id="themeToggle" aria-label="Cambiar tema">◐</button>
+  </header>
+
+  <main id="contenido">
+    <section id="inicio" class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">NIVEL MASTER → PHD · EDICIÓN 0.1</p>
+        <h1>Aprende modelos como un sistema de <em>decisiones</em>.</h1>
+        <p class="lead">Explora la matemática, cambia los supuestos y observa qué acción comercial recomendaría cada modelo. La meta no es predecir mejor en abstracto: es decidir, medir el resultado y aprender.</p>
+        <div class="hero-actions"><a class="button primary" href="#laboratorios">Entrar al laboratorio</a><a class="button ghost" href="#ruta">Ver ruta de dominio</a></div>
+        <dl class="hero-stats"><div><dt>4</dt><dd>capítulos completos</dd></div><div><dt>20</dt><dd>gráficos vivos</dd></div><div><dt>100%</dt><dd>datos sintéticos</dd></div></dl>
+      </div>
+      <div class="decision-loop" aria-label="Ciclo de Decision Intelligence">
+        <div class="loop-core"><span>DECISIÓN</span><strong>¿Qué haremos?</strong></div>
+        <span class="orbit o1">Evidencia</span><span class="orbit o2">Modelo</span><span class="orbit o3">Acción</span><span class="orbit o4">Resultado</span>
+        <svg viewBox="0 0 520 520" aria-hidden="true"><circle cx="260" cy="260" r="190"/><circle cx="260" cy="260" r="132"/><path d="M260 38a222 222 0 0 1 214 164"/></svg>
+      </div>
+    </section>
+
+    <section id="constelacion" class="section constellation-section">
+      <div class="section-head"><div><p class="eyebrow">MAPA DE ORBITAS</p><h2>La constelación de modelos</h2></div><p>No memorices algoritmos aislados. Ubícalos por el tipo de señal que reciben y la decisión que habilitan.</p></div>
+      <div class="constellation-grid">
+        <article class="orbit-card supervised"><span class="orbit-number">01</span><p class="tag">SUPERVISADO</p><h3>Aprende con una respuesta conocida</h3><p>Clasifica, estima o pronostica a partir de ejemplos con objetivo observado.</p><ul><li><b>XGBoost</b> · riesgo de caída</li><li><b>SARIMA / ETS</b> · ventas futuras</li><li>Survival · tiempo hasta minuta</li><li>Uplift · efecto incremental</li></ul></article>
+        <article class="orbit-card unsupervised"><span class="orbit-number">02</span><p class="tag">NO SUPERVISADO</p><h3>Descubre estructura sin etiquetas</h3><p>Encuentra segmentos, anomalías y representaciones que aún no tienen nombre.</p><ul><li><b>K-means</b> · segmentos de demanda</li><li>GMM · pertenencia probabilística</li><li>Isolation Forest · anomalías</li><li>PCA / UMAP · estructura latente</li></ul></article>
+        <article class="orbit-card reinforcement"><span class="orbit-number">03</span><p class="tag">REINFORCEMENT</p><h3>Aprende de acciones y recompensas</h3><p>Equilibra explorar alternativas con explotar lo que hoy parece funcionar.</p><ul><li><b>Contextual bandit</b> · precio/oferta</li><li>Q-learning · política secuencial</li><li>Thompson Sampling · exploración</li><li>Constrained RL · guardrails</li></ul></article>
+      </div>
+      <div class="bridge"><span>Predicción</span><i>+</i><span>Causalidad</span><i>+</i><span>Restricciones</span><i>+</i><span>Outcome</span><strong>= Decision Intelligence</strong></div>
+    </section>
+
+    <section id="laboratorios" class="section labs-section">
+      <div class="section-head"><div><p class="eyebrow">LABORATORIOS INTERACTIVOS</p><h2>Del concepto al criterio experto</h2></div><p>Cada capítulo responde cinco preguntas visuales: señal, ajuste, error, incertidumbre y decisión.</p></div>
+      <div class="lab-tabs" role="tablist" aria-label="Capítulos de modelos">
+        <button class="lab-tab active" role="tab" aria-selected="true" data-lab="forecast">01 Forecast</button>
+        <button class="lab-tab" role="tab" aria-selected="false" data-lab="churn">02 Churn</button>
+        <button class="lab-tab" role="tab" aria-selected="false" data-lab="cluster">03 Clustering</button>
+        <button class="lab-tab" role="tab" aria-selected="false" data-lab="bandit">04 Pricing bandit</button>
+      </div>
+
+      <article class="lab-panel active" id="lab-forecast" data-lab-panel="forecast">
+        <div class="lab-intro"><div><p class="tag">SUPERVISADO · SERIES DE TIEMPO</p><h3>Forecast de ventas: de la curva mensual a capacidad operativa</h3><p>Separamos tendencia, estacionalidad y ruido. El forecast no es una cifra: es una distribución condicionada a supuestos.</p></div><div class="decision-card"><small>DECISIÓN QUE HABILITA</small><strong>Dimensionar meta, pauta y capacidad de atención</strong><span id="forecastDecision">Escenario base: 31 separaciones esperadas</span></div></div>
+        <div class="control-deck">
+          <label>Horizonte <output id="horizonOut">14 días</output><input id="horizon" type="range" min="7" max="30" value="14" /></label>
+          <label>Estacionalidad <output id="seasonOut">1.0×</output><input id="season" type="range" min="0" max="20" value="10" /></label>
+          <label>Ruido <output id="noiseOut">medio</output><input id="noise" type="range" min="0" max="20" value="8" /></label>
+          <button class="button primary rerun" data-rerun="forecast">↻ Recalcular escenario</button>
+        </div>
+        <div class="chart-grid"><figure><figcaption><b>1. Curva de ventas</b><span>observado vs forecast</span></figcaption><div class="chart" id="forecast-main"></div></figure><figure><figcaption><b>2. Incertidumbre</b><span>intervalos 80% y 95%</span></figcaption><div class="chart" id="forecast-interval"></div></figure><figure><figcaption><b>3. Residuos</b><span>¿queda señal sin explicar?</span></figcaption><div class="chart" id="forecast-residual"></div></figure><figure><figcaption><b>4. Autocorrelación</b><span>memoria temporal</span></figcaption><div class="chart" id="forecast-acf"></div></figure><figure><figcaption><b>5. Error por horizonte</b><span>MAE día × escenario</span></figcaption><div class="chart" id="forecast-error"></div></figure></div>
+        <div class="concept-strip"><div><small>EXPRESIÓN</small><b>y<sub>t</sub> = T<sub>t</sub> + S<sub>t</sub> + ε<sub>t</sub></b></div><p><strong>Lectura:</strong> demanda observada = tendencia + patrón repetitivo + sorpresa. Si los residuos conservan patrón, el modelo aún no terminó de aprender.</p><a href="https://otexts.com/fpp3/" target="_blank" rel="noreferrer">Capítulo abierto ↗</a></div>
+      </article>
+
+      <article class="lab-panel" id="lab-churn" data-lab-panel="churn">
+        <div class="lab-intro"><div><p class="tag">SUPERVISADO · CLASIFICACIÓN</p><h3>XGBoost para riesgo de caída: probabilidad no es destino</h3><p>Un ensamble de árboles aprende interacciones no lineales. El umbral transforma probabilidad en una acción y exige explicitar costos.</p></div><div class="decision-card"><small>DECISIÓN QUE HABILITA</small><strong>Priorizar rescate de separaciones</strong><span id="churnDecision">Atender 36 casos; 25 caídas detectadas</span></div></div>
+        <div class="control-deck"><label>Umbral <output id="thresholdOut">0.50</output><input id="threshold" type="range" min="20" max="80" value="50" /></label><label>Profundidad <output id="depthOut">4</output><input id="depth" type="range" min="2" max="8" value="4" /></label><label>Learning rate <output id="etaOut">0.10</output><input id="eta" type="range" min="3" max="30" value="10" /></label><button class="button primary rerun" data-rerun="churn">↻ Reentrenar challenger</button></div>
+        <div class="chart-grid"><figure><figcaption><b>1. Curva ROC</b><span>AUC discrimina, no calibra</span></figcaption><div class="chart" id="churn-roc"></div></figure><figure><figcaption><b>2. Calibración</b><span>probabilidad predicha vs real</span></figcaption><div class="chart" id="churn-calibration"></div></figure><figure><figcaption><b>3. Matriz de confusión</b><span>errores según umbral</span></figcaption><div class="chart" id="churn-confusion"></div></figure><figure><figcaption><b>4. Importancia</b><span>señales que usa el modelo</span></figcaption><div class="chart" id="churn-features"></div></figure><figure><figcaption><b>5. Valor del umbral</b><span>beneficio esperado</span></figcaption><div class="chart" id="churn-profit"></div></figure></div>
+        <div class="concept-strip"><div><small>EXPRESIÓN</small><b>AUC = P(s(x⁺) &gt; s(x⁻))</b></div><p><strong>Lectura:</strong> probabilidad de que una caída real reciba mayor score que una no caída. No dice si 0.70 significa realmente 70%.</p><a href="https://arxiv.org/abs/1603.02754" target="_blank" rel="noreferrer">Paper XGBoost ↗</a></div>
+      </article>
+
+      <article class="lab-panel" id="lab-cluster" data-lab-panel="cluster">
+        <div class="lab-intro"><div><p class="tag">NO SUPERVISADO · SEGMENTACIÓN</p><h3>K-means: descubrir demanda sin inventar personas</h3><p>El algoritmo minimiza distancia dentro de grupos. El analista decide si esos grupos son estables, accionables y éticamente utilizables.</p></div><div class="decision-card"><small>DECISIÓN QUE HABILITA</small><strong>Diseñar oferta y mensaje por patrón</strong><span id="clusterDecision">4 segmentos; separación media 0.51</span></div></div>
+        <div class="control-deck"><label>Número de clusters <output id="kOut">4</output><input id="k" type="range" min="2" max="7" value="4" /></label><label>Escala de ingreso <output id="incomeOut">1.0×</output><input id="incomeScale" type="range" min="5" max="20" value="10" /></label><label>Inicializaciones <output id="initOut">10</output><input id="inits" type="range" min="1" max="20" value="10" /></label><button class="button primary rerun" data-rerun="cluster">↻ Reagrupar demanda</button></div>
+        <div class="chart-grid"><figure><figcaption><b>1. Mapa de clientes</b><span>ticket vs urgencia</span></figcaption><div class="chart" id="cluster-scatter"></div></figure><figure><figcaption><b>2. Método del codo</b><span>inercia por k</span></figcaption><div class="chart" id="cluster-elbow"></div></figure><figure><figcaption><b>3. Silueta</b><span>cohesión y separación</span></figcaption><div class="chart" id="cluster-silhouette"></div></figure><figure><figcaption><b>4. Perfil multivariable</b><span>huella de cada segmento</span></figcaption><div class="chart" id="cluster-profile"></div></figure><figure><figcaption><b>5. Tamaño × conversión</b><span>valor comercial del segmento</span></figcaption><div class="chart" id="cluster-value"></div></figure></div>
+        <div class="concept-strip"><div><small>EXPRESIÓN</small><b>s(i) = (b(i) − a(i)) / max(a(i), b(i))</b></div><p><strong>Lectura:</strong> compara qué tan cerca está un cliente de su propio grupo frente al vecino. Cerca de 1 es nítido; cerca de 0 es frontera.</p><a href="https://scikit-learn.org/stable/auto_examples/cluster/plot_kmeans_silhouette_analysis.html" target="_blank" rel="noreferrer">Ejemplo oficial ↗</a></div>
+      </article>
+
+      <article class="lab-panel" id="lab-bandit" data-lab-panel="bandit">
+        <div class="lab-intro"><div><p class="tag">REINFORCEMENT · CONTEXTUAL BANDIT</p><h3>Pricing adaptativo: aprender sin regalar el margen</h3><p>Cada opción de precio es una acción; la conversión y el margen forman la recompensa. Guardrails limitan la exploración comercial.</p></div><div class="decision-card"><small>DECISIÓN QUE HABILITA</small><strong>Elegir incentivo por contexto</strong><span id="banditDecision">Explorar 10%; ingreso esperado S/ 1.84M</span></div></div>
+        <div class="control-deck"><label>Exploración ε <output id="epsilonOut">10%</output><input id="epsilon" type="range" min="0" max="40" value="10" /></label><label>Días simulados <output id="daysOut">60</output><input id="days" type="range" min="20" max="120" value="60" /></label><label>Descuento máximo <output id="discountOut">8%</output><input id="discount" type="range" min="2" max="15" value="8" /></label><button class="button primary rerun" data-rerun="bandit">▶ Simular política</button></div>
+        <div class="chart-grid"><figure><figcaption><b>1. Curva demanda–precio</b><span>elasticidad estimada</span></figcaption><div class="chart" id="bandit-demand"></div></figure><figure><figcaption><b>2. Recompensa por acción</b><span>conversión × margen</span></figcaption><div class="chart" id="bandit-reward"></div></figure><figure><figcaption><b>3. Regret acumulado</b><span>costo de aprender</span></figcaption><div class="chart" id="bandit-regret"></div></figure><figure><figcaption><b>4. Mezcla de acciones</b><span>qué precios eligió</span></figcaption><div class="chart" id="bandit-share"></div></figure><figure><figcaption><b>5. Outcome diario</b><span>distribución de ingresos</span></figcaption><div class="chart" id="bandit-outcome"></div></figure></div>
+        <div class="concept-strip"><div><small>EXPRESIÓN</small><b>a<sub>t</sub> = argmax<sub>a</sub> Q(x<sub>t</sub>,a) + exploración</b></div><p><strong>Lectura:</strong> elegir la mejor acción conocida para este contexto, reservando una fracción controlada para aprender alternativas.</p><a href="https://tor-lattimore.com/downloads/book/book.pdf" target="_blank" rel="noreferrer">Libro Bandit Algorithms ↗</a></div>
+      </article>
+    </section>
+
+    <section id="ruta" class="section pathway">
+      <div class="section-head"><div><p class="eyebrow">RUTA DE ALTO RENDIMIENTO</p><h2>De analista a Decision Intelligence con IA</h2></div><p>Una secuencia de ocho semanas construida alrededor de evidencias y decisiones reales, no de horas de video.</p></div>
+      <div class="path-grid">
+        <article><span>01 · SEM 1–2</span><h3>Medición</h3><p>Probabilidad, inferencia, diseño de métricas y leakage temporal.</p><b>Entregable</b><small>Contrato de decisión + baseline SQL</small></article>
+        <article><span>02 · SEM 3–4</span><h3>Predicción</h3><p>Validación temporal, calibración, incertidumbre y explicabilidad.</p><b>Entregable</b><small>Champion/challenger reproducible</small></article>
+        <article><span>03 · SEM 5–6</span><h3>Causalidad</h3><p>Experimentos, uplift, sesgo de selección y contrafactuales.</p><b>Entregable</b><small>Diseño A/B con guardrails</small></article>
+        <article><span>04 · SEM 7–8</span><h3>Decisión</h3><p>Optimización, utilidad, bandits, monitoreo y outcome memory.</p><b>Entregable</b><small>Loop decisión → resultado</small></article>
+      </div>
+      <div class="mastery"><div><p class="tag">RÚBRICA DE DOMINIO</p><h3>Sabes un modelo cuando puedes…</h3></div><ol><li>explicar su supuesto más frágil;</li><li>construir un baseline más simple;</li><li>elegir una métrica ligada al costo;</li><li>detectar cuándo no usarlo;</li><li>convertir su output en una acción auditable.</li></ol></div>
+    </section>
+
+    <section id="biblioteca" class="section resources">
+      <div class="section-head"><div><p class="eyebrow">FUENTES ACADÉMICAS</p><h2>Biblioteca de órbita</h2></div><p>Recursos primarios y abiertos para profundizar. Cada enlace indica para qué usarlo.</p></div>
+      <div class="resource-grid">
+        <a href="https://ocw.mit.edu/courses/6-036-introduction-to-machine-learning-fall-2020/" target="_blank" rel="noreferrer"><span>CURSO · MIT OCW</span><h3>Introduction to Machine Learning</h3><p>Fundamentos, generalización, supervisado y reinforcement.</p><b>Abrir ↗</b></a>
+        <a href="https://www.statlearning.com/" target="_blank" rel="noreferrer"><span>LIBRO · STANFORD</span><h3>Introduction to Statistical Learning</h3><p>Teoría aplicada y laboratorios en Python.</p><b>Abrir ↗</b></a>
+        <a href="https://otexts.com/fpp3/" target="_blank" rel="noreferrer"><span>LIBRO · OTEXTS</span><h3>Forecasting: Principles & Practice</h3><p>Series, validación, ARIMA, ETS y jerarquías.</p><b>Abrir ↗</b></a>
+        <a href="https://incompleteideas.net/book/the-book-2nd.html" target="_blank" rel="noreferrer"><span>LIBRO · MIT PRESS</span><h3>Reinforcement Learning</h3><p>Sutton & Barto: valores, políticas y aprendizaje.</p><b>Abrir ↗</b></a>
+        <a href="https://github.com/dmlc/xgboost" target="_blank" rel="noreferrer"><span>GITHUB · OFICIAL</span><h3>XGBoost</h3><p>Código, documentación y demos del algoritmo.</p><b>Abrir ↗</b></a>
+        <a href="https://scikit-learn.org/stable/modules/clustering.html" target="_blank" rel="noreferrer"><span>DOCUMENTACIÓN</span><h3>Scikit-learn Clustering</h3><p>Algoritmos, supuestos y evaluación práctica.</p><b>Abrir ↗</b></a>
+      </div>
+    </section>
+
+    <section class="section suggestion">
+      <div><p class="eyebrow">BUZÓN DE MEJORA</p><h2>¿Qué modelo debería entrar en la próxima órbita?</h2><p>Propón un caso, un paper o una corrección. El portal preparará un correo o un issue; no almacenamos datos personales.</p></div>
+      <form id="suggestionForm">
+        <label>Tema<input id="suggestionTopic" required maxlength="90" placeholder="Ej. survival analysis para tiempo a minuta" /></label>
+        <label>Por qué importa<textarea id="suggestionBody" required maxlength="600" placeholder="Qué decisión permitiría mejorar…"></textarea></label>
+        <div><button class="button primary" type="submit">Preparar correo</button><a class="button ghost" id="issueLink" target="_blank" rel="noreferrer" href="https://github.com/dinatalediego/decision_intelligence/issues/new">Crear issue en GitHub</a></div>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+  <footer><span>Decision Intelligence Academy · v0.1</span><span>Datos sintéticos · decisiones auditables · Lima</span></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
