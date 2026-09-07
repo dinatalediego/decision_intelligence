@@ -11,3 +11,4 @@ test('recursos externos abren de forma segura',()=>{const links=html.match(/targ
 test('no hay dependencias remotas ni secretos cliente',()=>{assert.doesNotMatch(html,/<script[^>]+https?:/);assert.doesNotMatch(js,/service_role|SUPABASE_SERVICE|api[_-]?key/i);});
 test('assets principales son sustantivos',()=>{assert.ok(html.length>12000);assert.ok(js.length>7000);assert.ok(css.length>7000);});
 test('las líneas SVG toleran tramos sin observación',()=>{assert.match(js,/filter\(Number\.isFinite\)/);assert.match(js,/\.filter\(Boolean\)\.join/);});
+test('cada modelo incorpora insights dinámicos en tercera persona',()=>{assert.equal((html.match(/class="smart-insight"/g)||[]).length,4);for(const id of ['forecastInsights','churnInsights','clusterInsights','banditInsights'])assert.match(js,new RegExp(`setInsights\\('${id}'`));for(const phrase of ['El modelo','El bandit','K-means','La política'])assert.match(js,new RegExp(phrase));});
