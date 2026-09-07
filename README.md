@@ -7,6 +7,7 @@ Portal educativo interactivo que enseña ciencia de datos como un ciclo de decis
 - 4 capítulos: forecasting, churn con XGBoost, clustering con K-means y pricing con contextual bandits.
 - 5 gráficos por capítulo (20 en total), generados con SVG y datos sintéticos determinísticos.
 - Controles interactivos para horizonte, estacionalidad, umbral, hiperparámetros, número de clusters, exploración y guardrails.
+- Smart Insights recalculados con cada escenario: lectura actual, explicación general del modelo y criterio de decisión en tercera persona.
 - Ruta de 8 semanas hacia un rol de Decision Intelligence.
 - Biblioteca académica primaria y buzón que prepara correo/issue sin almacenar datos personales.
 
