@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
+const js=await readFile(new URL('../dist/app.js',import.meta.url),'utf8');
+const css=await readFile(new URL('../dist/styles.css',import.meta.url),'utf8');
+test('incluye cuatro modelos y sus tres paradigmas',()=>{for(const model of ['Forecast','Churn','Clustering','Pricing bandit'])assert.match(html,new RegExp(model,'i'));for(const family of ['SUPERVISADO','NO SUPERVISADO','REINFORCEMENT'])assert.match(html,new RegExp(family));});
+test('cada laboratorio declara exactamente cinco visualizaciones',()=>{for(const lab of ['forecast','churn','cluster','bandit']){const panel=html.match(new RegExp(`<article class="lab-panel[^"]*" id="lab-${lab}"[\\s\\S]*?</article>`));assert.ok(panel,`panel ${lab}`);assert.equal((panel[0].match(/<figure>/g)||[]).length,5,`${lab} debe tener 5 gráficos`);}});
+test('controles accesibles y datos sintéticos explícitos',()=>{assert.match(html,/type="range"/);assert.match(html,/aria-live="polite"/);assert.match(html,/100%<\/dt><dd>datos sintéticos/);assert.match(html,/Datos sintéticos/);});
+test('recursos externos abren de forma segura',()=>{const links=html.match(/target="_blank"/g)||[];const safe=html.match(/rel="noreferrer"/g)||[];assert.ok(links.length>=8);assert.equal(links.length,safe.length);});
+test('no hay dependencias remotas ni secretos cliente',()=>{assert.doesNotMatch(html,/<script[^>]+https?:/);assert.doesNotMatch(js,/service_role|SUPABASE_SERVICE|api[_-]?key/i);});
+test('assets principales son sustantivos',()=>{assert.ok(html.length>12000);assert.ok(js.length>7000);assert.ok(css.length>7000);});
+test('las líneas SVG toleran tramos sin observación',()=>{assert.match(js,/filter\(Number\.isFinite\)/);assert.match(js,/\.filter\(Boolean\)\.join/);});
